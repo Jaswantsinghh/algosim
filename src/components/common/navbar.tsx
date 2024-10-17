@@ -8,6 +8,16 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
+// Dropdown items array
+const dropdownItems = [
+  { name: "Linear Search", href: "/search-algos/linear-search" },
+  {
+    name: "Sentinel Linear Search",
+    href: "/search-algos/sentinel-linear-search",
+  },
+  { name: "Binary Search", href: "/search-algos/binary-search" },
+];
+
 export const Navbar: React.FC = () => {
   return (
     <div className="flex items-center justify-between px-4 py-2">
@@ -25,20 +35,19 @@ export const Navbar: React.FC = () => {
             {/* Search Algos dropdown */}
             <NavigationMenuItem>
               <NavigationMenuTrigger>Search Algos</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="flex flex-col space-y-2">
-                  <NavigationMenuLink
-                    className=""
-                    href="/search-algos/linear-search"
-                  >
-                    Linear Search
-                  </NavigationMenuLink>
-                  <NavigationMenuLink
-                    className=""
-                    href="/search-algos/binary-search"
-                  >
-                    Binary Search
-                  </NavigationMenuLink>
+              <NavigationMenuContent style={{ width: "120px" }} className="">
+                {" "}
+                {/* Adjusted width */}
+                <div className="flex flex-col">
+                  {dropdownItems.map((item) => (
+                    <NavigationMenuLink
+                      key={item.name}
+                      href={item.href}
+                      style={{ padding: "4px" }}
+                    >
+                      {item.name}
+                    </NavigationMenuLink>
+                  ))}
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
