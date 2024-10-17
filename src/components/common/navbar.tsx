@@ -33,6 +33,12 @@ export const Navbar: React.FC = () => {
                   >
                     Linear Search
                   </NavigationMenuLink>
+                  <NavigationMenuLink
+                    className=""
+                    href="/search-algos/binary-search"
+                  >
+                    Binary Search
+                  </NavigationMenuLink>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import Link from "next/link";
 
 export default function LinearSearch() {
   const [array, setArray] = useState<number[]>([10, 23, 31, 4, 15, 60]);
@@ -62,10 +63,18 @@ export default function LinearSearch() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-10 px-5">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        Linear Search Simulator
-      </h1>
-
+      <div className="flex items-center mb-6">
+        <h1 className="text-3xl font-bold text-center mr-4">
+          Linear Search Simulator
+        </h1>
+        <Link href="/learn/search-algos/linear-search">
+          <button className="flex items-center bg-blue-500 text-white py-1 px-3 rounded-md shadow-sm hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 text-sm">
+            <i className="fa fa-info-circle mr-1"></i>{" "}
+            {/* Icon and text with slight spacing */}
+            <span>Learn</span>
+          </button>
+        </Link>
+      </div>
       {/* Array Input Section */}
       <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/4 mb-6">
         <input
