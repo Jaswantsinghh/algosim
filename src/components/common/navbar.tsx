@@ -8,14 +8,20 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
-// Dropdown items array
-const dropdownItems = [
+// Dropdown items arrays
+const searchAlgos = [
   { name: "Linear Search", href: "/search-algos/linear-search" },
   {
     name: "Sentinel Linear Search",
     href: "/search-algos/sentinel-linear-search",
   },
   { name: "Binary Search", href: "/search-algos/binary-search" },
+  /* { name: "Meta Binary Search", href: "/search-algos/meta-binary-search" }, */
+];
+
+const sortingAlgos = [
+  { name: "Selection Sort", href: "/sorting-algos/selection-sort" },
+  /* Add more sorting algos here */
 ];
 
 export const Navbar: React.FC = () => {
@@ -27,7 +33,7 @@ export const Navbar: React.FC = () => {
         <span className="font-bold text-lg">AlgoSim</span>
       </div>
 
-      {/* Right side: Navigation and Search Algos Dropdown */}
+      {/* Right side: Navigation and Dropdown Menus */}
       <div className="flex items-center space-x-6">
         {/* Navigation Menu */}
         <NavigationMenu>
@@ -35,11 +41,27 @@ export const Navbar: React.FC = () => {
             {/* Search Algos dropdown */}
             <NavigationMenuItem>
               <NavigationMenuTrigger>Search Algos</NavigationMenuTrigger>
-              <NavigationMenuContent style={{ width: "120px" }} className="">
-                {" "}
-                {/* Adjusted width */}
+              <NavigationMenuContent style={{ width: "160px" }} className="">
                 <div className="flex flex-col">
-                  {dropdownItems.map((item) => (
+                  {searchAlgos.map((item) => (
+                    <NavigationMenuLink
+                      key={item.name}
+                      href={item.href}
+                      style={{ padding: "4px" }}
+                    >
+                      {item.name}
+                    </NavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            {/* Sorting Algos dropdown */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Sorting Algos</NavigationMenuTrigger>
+              <NavigationMenuContent style={{ width: "160px" }} className="">
+                <div className="flex flex-col">
+                  {sortingAlgos.map((item) => (
                     <NavigationMenuLink
                       key={item.name}
                       href={item.href}
