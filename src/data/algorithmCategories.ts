@@ -19,12 +19,12 @@ export const algorithmCategories = [
       { name: "Bubble Sort", href: "/sorting-algos/bubble-sort" },
     ],
   },
-  {
+  /*  {
     title: "Graph Algos", // Example new category
     items: [
       { name: "Dijkstra's Algorithm", href: "/graph-algos/dijkstra" },
       { name: "A* Search", href: "/graph-algos/a-star" },
     ],
-  },
+  }, */
   // Add more categories here as needed in the future
 ];
