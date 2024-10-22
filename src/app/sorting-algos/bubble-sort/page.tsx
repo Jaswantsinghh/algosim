@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function BubbleSort() {
   const [array, setArray] = useState<number[]>([29, 10, 14, 37, 13]);
   const [newArray, setNewArray] = useState(""); // State for new array input
-  const [currentIndex, setCurrentIndex] = useState(-1); // Tracks the current index in the sorting process
+  const [, setCurrentIndex] = useState(-1); // Tracks the current index in the sorting process
   const [swappingIndexes, setSwappingIndexes] = useState<number[]>([]); // Tracks the indexes being swapped
   const [sortedIndex, setSortedIndex] = useState(-1); // Tracks the sorted part of the array
   const [steps, setSteps] = useState<string[]>([]); // To track algorithm steps
