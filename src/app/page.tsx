@@ -155,7 +155,7 @@ export default function HomePage() {
       </section>
 
       {/* How to Contribute Section */}
-      <section className="py-20 px-6 bg-gray-50 text-center">
+      {/* <section className="py-20 px-6 bg-gray-50 text-center">
         <h2 className="text-3xl font-bold text-blue-600 mb-6">
           How to Contribute
         </h2>
@@ -170,7 +170,7 @@ export default function HomePage() {
             Contribute Now
           </button>
         </Link>
-      </section>
+      </section> */}
 
       {/* Footer */}
     </div>
