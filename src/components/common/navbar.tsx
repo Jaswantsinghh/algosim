@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { HoveredLink, Menu, MenuItem } from '../ui/navbar-menu';
 import { useState } from 'react';
 import { algorithmCategories } from '@/data/algorithmCategories';
+import Link from 'next/link';
 
 function Navbar({ className }: Readonly<{ className?: string }>) {
   const [active, setActive] = useState<string | null>(null);
@@ -13,7 +14,9 @@ function Navbar({ className }: Readonly<{ className?: string }>) {
         className
       )}
     >
+      <Link href='/'>
       <p className="text-2xl">Algosim</p>
+      </Link>
       <div className="flex gap-2">
         {algorithmCategories.map((algoCategory) => (
           <Menu setActive={setActive} key={algoCategory.title}>
