@@ -1,59 +1,43 @@
-import React from "react";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { algorithmCategories } from "@/data/algorithmCategories"; // Import from the new file
+'use client';
+import { cn } from '@/lib/utils';
+import { HoveredLink, Menu, MenuItem } from '../ui/navbar-menu';
+import { useState } from 'react';
+import { algorithmCategories } from '@/data/algorithmCategories';
+import Link from 'next/link';
 
-// Reusable NavigationMenuLinks component
-const NavigationLinks = ({
-  items,
-}: {
-  items: { name: string; href: string }[];
-}) => {
+function Navbar({ className }: Readonly<{ className?: string }>) {
+  const [active, setActive] = useState<string | null>(null);
   return (
-    <div className="flex flex-col">
-      {items.map((item) => (
-        <NavigationMenuLink
-          key={item.name}
-          href={item.href}
-          className="px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
-        >
-          {item.name}
-        </NavigationMenuLink>
-      ))}
-    </div>
-  );
-};
-
-export const Navbar: React.FC = () => {
-  return (
-    <div className="flex items-center justify-between px-4 py-2">
-      {/* Left side: AlgoSim logo */}
-      <div className="flex items-center space-x-4">
-        <span className="font-bold text-lg">AlgoSim</span>
+    <header
+      className={cn(
+        'flex justify-between items-center border-2 inset-x-0 w-full mx-auto relative z-50 px-8',
+        className
+      )}
+    >
+      <Link href='/'>
+      <p className="text-2xl">Algosim</p>
+      </Link>
+      <div className="flex gap-2">
+        {algorithmCategories.map((algoCategory) => (
+          <Menu setActive={setActive} key={algoCategory.title}>
+            <MenuItem
+              setActive={setActive}
+              active={active}
+              item={algoCategory.title}
+            >
+              <div className="flex flex-col space-y-4 text-sm">
+                {algoCategory.items.map((algo) => (
+                  <HoveredLink key={algo.href} href={algo.href}>
+                    {algo.name}
+                  </HoveredLink>
+                ))}
+              </div>
+            </MenuItem>
+          </Menu>
+        ))}
       </div>
-
-      {/* Right side: Navigation and Dropdown Menus */}
-      <div className="flex items-center space-x-6 z-[10]">
-        <NavigationMenu>
-          <NavigationMenuList>
-            {/* Iterate through each algorithm category */}
-            {algorithmCategories.map((category) => (
-              <NavigationMenuItem key={category.title}>
-                <NavigationMenuTrigger>{category.title}</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <NavigationLinks items={category.items} />
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-    </div>
+    </header>
   );
-};
+}
+
+export default Navbar;
